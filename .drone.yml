@@ -1,0 +1,23 @@
+pipeline:
+
+#  test:
+#    image: node:alpine
+#    commands:
+#      - npm install -s
+#      - npm test
+
+  build:
+    image: docker:dind
+    commands:
+      - docker build -t pinked/mjpeg-proxy:latest .
+      - docker login -u="chrisns" -p=${DOCKER_PASSWORD}
+      - docker push pinked/mjpeg-proxy:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  deploy:
+    image: docker
+    commands:
+      - docker deploy --compose-file docker-compose.yml mjpeg
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
