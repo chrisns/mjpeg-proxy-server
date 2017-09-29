@@ -1,4 +1,6 @@
 # Mjpeg proxy
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/pinked/mjpeg-proxy-server.svg)](https://greenkeeper.io/)
 Simple node app / docker image to proxy a mjpeg stream(s) specified by environment variable(s).
 
 `CAM_1=http://10.0.0.0/myjpg.mjpeg CAM_2=http://10.0.0.1/myjpg.mjpeg npm start`
